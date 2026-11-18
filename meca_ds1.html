@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060608">
+<meta name="description" content="Entrainement au DS1 de mécanique du point, STPI 1A INSA CVL : énoncés générés, corrections calculées, statistiques et test de positionnement.">
+<title>DS1 Mécanique du point | STPI 1A Open</title>
+<link rel="icon" href="INSACVL.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+:root{
+  --bg:#060608;--surface:rgba(255,255,255,.04);--border:rgba(255,255,255,.08);--border-h:rgba(255,255,255,.18);
+  --t1:#fff;--t2:rgba(255,255,255,.58);--t3:rgba(255,255,255,.34);
+  --ok:#8fd19e;--ko:#e8908f;
+  --sans:'Inter',system-ui,sans-serif;--display:'Space Grotesk','Inter',sans-serif;
+  --r:14px;--rl:20px;--nav:60px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--t1);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:8px}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 28px;background:rgba(6,6,8,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo img{width:26px;height:26px;object-fit:contain;border-radius:6px}
+.logo-text{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.02em}
+.open{font-family:var(--display);font-size:11px;font-weight:700;padding:2px 9px;border:1px solid rgba(255,255,255,.4);border-radius:100px}
+.nav-links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-link{font-size:13px;font-weight:500;color:var(--t2);padding:6px 12px;border-radius:8px;white-space:nowrap;transition:color .15s,background .15s}
+.nav-link:hover{color:#fff;background:rgba(255,255,255,.06)}
+.nav-link.on{color:#000;background:#fff}
+.btn-nav{font-size:13px;font-weight:600;color:#000;background:#fff;padding:7px 14px;border-radius:8px;white-space:nowrap;flex-shrink:0}
+.wrap{max-width:960px;margin:0 auto;padding:calc(var(--nav) + 44px) 24px 96px}
+.wrap.narrow{max-width:720px}
+h1{font-family:var(--display);font-size:clamp(28px,4.5vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+h2{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.02em;margin:44px 0 16px}
+.lead{color:var(--t2);font-size:15px;max-width:620px;margin-top:14px}
+.btn-primary,.btn-ghost{font-family:var(--display);font-size:14px;padding:12px 24px;border-radius:9px;display:inline-flex;align-items:center;cursor:pointer;border:1px solid transparent;transition:opacity .15s,transform .15s,background .15s,border-color .15s}
+.btn-primary{background:#fff;color:#000;font-weight:700}
+.btn-primary:hover{opacity:.85;transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,.05);color:rgba(255,255,255,.8);border-color:var(--border);font-weight:600}
+.btn-ghost:hover{background:rgba(255,255,255,.09);border-color:var(--border-h)}
+.sm{padding:8px 16px;font-size:13px}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:24px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+a.card{transition:border-color .2s,background .2s}
+a.card:hover{border-color:var(--border-h);background:rgba(255,255,255,.055)}
+.big{font-family:var(--display);font-size:44px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.cap{font-size:12.5px;color:var(--t3);margin-top:8px}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid var(--border);color:rgba(255,255,255,.6)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.brow{display:grid;grid-template-columns:minmax(120px,260px) 1fr 84px;gap:14px;align-items:center;padding:9px 0;font-size:13.5px}
+a.brow:hover .bl{color:#fff}
+.bl{color:var(--t2)}
+.bar{display:block;height:6px;border-radius:6px;background:rgba(255,255,255,.07);overflow:hidden}
+.bar i{display:block;height:100%;background:#fff;border-radius:6px}
+.bv{text-align:right;color:var(--t2);font-variant-numeric:tabular-nums}
+.ex-card{display:flex;flex-direction:column;gap:6px}
+.rom{font-family:var(--display);font-weight:700;font-size:13px;color:var(--t3);letter-spacing:.04em}
+.ex-card .t{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.ex-card .r{font-size:12.5px;color:var(--t3);margin-top:auto;padding-top:14px}
+.back{display:inline-block;font-size:13px;color:var(--t2);margin-bottom:22px}
+.back:hover{color:#fff}
+.head{display:flex;gap:18px;align-items:flex-start}
+.head .rom{font-size:34px;line-height:1.1;min-width:54px;color:var(--t3)}
+.rate{margin-top:22px;font-size:13.5px;color:var(--t2)}
+.rate b{color:#fff}
+.intro{margin-top:18px;padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);font-size:15px;line-height:1.75}
+.label{font-size:12.5px;color:var(--t3);margin-top:26px}
+.qs{list-style:none;counter-reset:q;margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.q{counter-increment:q;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;transition:border-color .2s}
+.q.good{border-color:rgba(143,209,158,.5)}
+.q.bad{border-color:rgba(232,144,143,.5)}
+.qs:not(.one) .qt::before{content:counter(q) ". ";font-family:var(--display);font-weight:700;color:var(--t3)}
+.qt{font-size:15px;line-height:1.75}
+.inrow{display:flex;align-items:center;gap:12px;margin-top:14px}
+.ans{width:190px;max-width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:9px;padding:10px 14px;color:#fff;font:14px var(--sans);outline:none;transition:border-color .15s}
+.ans:focus{border-color:var(--border-h)}
+.ans::placeholder{color:var(--t3)}
+.unit{font-size:14px;color:var(--t2)}
+.opts{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.opt{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:14.5px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--border-h)}
+.opt:has(input:checked){border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.06)}
+.opt input{accent-color:#fff;flex-shrink:0}
+.btns{display:flex;gap:8px;margin-top:16px}
+.fb{margin-top:12px;font-size:14px;min-height:0}
+.fb.ok{color:var(--ok)}
+.fb.ko{color:var(--ko)}
+.sol{margin-top:14px;padding:16px 18px;border-left:2px solid rgba(255,255,255,.25);background:rgba(255,255,255,.03);border-radius:0 10px 10px 0;font-size:14.5px;line-height:1.8;color:rgba(255,255,255,.85)}
+.sol p+p{margin-top:8px}
+.note{margin-top:22px;font-size:12.5px;color:var(--t3);max-width:620px}
+.prog{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;font-size:13px;color:var(--t2)}
+.warn{margin-top:20px;padding:14px 18px;border:1px solid var(--border);border-radius:var(--r);font-size:13.5px;color:var(--t2)}
+details{border:1px solid var(--border);border-radius:var(--r);background:var(--surface);margin-top:10px}
+summary{cursor:pointer;padding:14px 18px;font-size:14px;display:flex;justify-content:space-between;gap:12px}
+summary span:last-child{font-weight:600}
+summary .j{color:var(--ok)}
+summary .f{color:var(--ko)}
+.det{padding:0 18px 18px;font-size:14.5px}
+.det .qt{margin-bottom:10px}
+.memo h3{font-family:var(--display);font-size:16px;margin-bottom:10px}
+.memo p{font-size:14.5px;line-height:1.9;color:rgba(255,255,255,.82)}
+.memo p+p{margin-top:6px}
+.katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden}
+@media(max-width:820px){.grid{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
+@media(max-width:560px){
+  nav{padding:0 14px}.btn-nav{display:none}.wrap{padding-left:16px;padding-right:16px}
+  .grid{grid-template-columns:1fr}.brow{grid-template-columns:1fr 84px}.brow .bar{grid-column:1/-1;order:3}
+  .logo-text{display:none}
+}
+</style>
+</head>
+<body>
+<nav aria-label="Navigation principale">
+  <a class="logo" href="index.html" aria-label="Retour à STPI 1A Open">
+    <img src="INSACVL.png" alt="">
+    <span class="logo-text">STPI 1A</span><span class="open">Open</span>
+  </a>
+  <div class="nav-links" id="links">
+    <a class="nav-link" href="#dashboard" data-r="dashboard">Tableau de bord</a>
+    <a class="nav-link" href="#test" data-r="test">Test de positionnement</a>
+    <a class="nav-link" href="#exercices" data-r="exercices">Exercices</a>
+    <a class="nav-link" href="#formules" data-r="formules">Formules</a>
+  </div>
+  <a class="btn-nav" href="index.html">Retour au site</a>
+</nav>
+<main id="app"></main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+(function(){
+const r=String.raw,G=9.81;
+const R=()=>Math.random();
+const pick=a=>a[Math.floor(R()*a.length)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const rad=d=>d*Math.PI/180,sin=d=>Math.sin(rad(d)),cos=d=>Math.cos(rad(d)),tan=d=>Math.tan(rad(d));
+const nf=(x,d=3)=>isFinite(x)?String(parseFloat(x.toPrecision(d))).replace('.',','):'?';
+const tx=(x,d=3)=>nf(x,d).replace(',','{,}');
+
+const SK={
+  bond:'Bases, produits scalaire et vectoriel',
+  cine:'Cinématique et équations horaires',
+  trc:'TRC (relation fondamentale)',
+  proj:'Bilan des forces et projections',
+  frot:'Frottement solide',
+  tec:'TEC (énergie cinétique)',
+  trav:'Travail des forces',
+  pend:'Pendule et équation du mouvement'
+};
+
+const num=(k,sk,q,a,u,sol,tol=0.02)=>({k,sk,t:'num',q,a,u,sol,tol});
+const qcm=(k,sk,q,good,bad,sol)=>{
+  const o=shuffle([good,...bad].map((x,i)=>({x,g:i===0})));
+  return{k,sk,t:'qcm',q,o:o.map(z=>z.x),c:o.findIndex(z=>z.g),sol};
+};
+
+const AX=['x','y','z'];
+const ev=(i,s=1)=>(s<0?'-':'')+r`\vec{e}_${AX[i]}`;
+const cyc=(i,j)=>((j-i+3)%3===1)?1:-1;
+
+const EX=[
+{id:1,rom:'I',title:"Bases orthonormées directes",sk:['bond'],gen(){
+  const eq=R()<.4,a=Math.floor(R()*3),b=eq?a:(a+1+Math.floor(R()*2))%3;
+  const i=Math.floor(R()*3),j=(i+1+Math.floor(R()*2))%3,k=3-i-j,s=cyc(i,j);
+  const p=shuffle([0,1,2]),sg=[0,0,0].map(()=>R()<.35?-1:1),c=cyc(p[0],p[1]),dir=sg[0]*sg[1]*sg[2]*c>0;
+  const i2=Math.floor(R()*3),j2=(i2+1+Math.floor(R()*2))%3,k2=3-i2-j2,s1=R()<.5?-1:1,s2=R()<.5?-1:1,w=s1*s2*cyc(i2,j2);
+  return{intro:r`Dans tout l'exercice, $(\vec{e}_x,\vec{e}_y,\vec{e}_z)$ désigne une base orthonormée directe.`,qs:[
+    num('sca','bond',r`Que vaut le produit scalaire $${ev(a)}\cdot${ev(b)}$ ?`,eq?1:0,'',[
+      eq?r`Les vecteurs sont unitaires : $${ev(a)}\cdot${ev(a)}=\|${ev(a)}\|^2=1$.`:r`Les deux vecteurs sont orthogonaux : leur produit scalaire est nul.`]),
+    qcm('vec','bond',r`Que vaut le produit vectoriel $${ev(i)}\wedge${ev(j)}$ ?`,r`$${ev(k,s)}$`,[r`$${ev(k,-s)}$`,r`$\vec{0}$`,r`$1$`],[
+      r`On utilise la permutation circulaire $(\vec{e}_x,\vec{e}_y,\vec{e}_z)$ : $\vec{e}_x\wedge\vec{e}_y=\vec{e}_z$, $\vec{e}_y\wedge\vec{e}_z=\vec{e}_x$, $\vec{e}_z\wedge\vec{e}_x=\vec{e}_y$. Dans l'autre sens, on change le signe.`,
+      r`Ici : $${ev(i)}\wedge${ev(j)}=${ev(k,s)}$.`]),
+    qcm('dir','bond',r`La base $(${ev(p[0],sg[0])},\ ${ev(p[1],sg[1])},\ ${ev(p[2],sg[2])})$ est-elle directe ?`,dir?'Oui':'Non',[dir?'Non':'Oui'],[
+      r`Une base $(\vec{u}_1,\vec{u}_2,\vec{u}_3)$ est directe si $\vec{u}_1\wedge\vec{u}_2=\vec{u}_3$.`,
+      r`Ici $${ev(p[0],sg[0])}\wedge${ev(p[1],sg[1])}=${ev(p[2],sg[0]*sg[1]*c)}$, à comparer à $${ev(p[2],sg[2])}$ : la base est ${dir?'directe':'indirecte'}.`]),
+    qcm('comp','bond',r`On veut compléter $(${ev(i2,s1)},\ ${ev(j2,s2)},\ \vec{w})$ pour obtenir une base orthonormée directe. Que vaut $\vec{w}$ ?`,r`$${ev(k2,w)}$`,[r`$${ev(k2,-w)}$`,r`$${ev(i2)}$`,r`$${ev(j2)}$`],[
+      r`Pour une base directe, $\vec{w}=\vec{u}_1\wedge\vec{u}_2=${ev(i2,s1)}\wedge${ev(j2,s2)}=${ev(k2,w)}$.`])
+  ]};
+}},
+
+{id:2,rom:'II',title:"Freinage d'une voiture (TRC)",sk:['trc','cine'],gen(){
+  const m=pick([700,850,1000,1200,1500]),F=pick([2000,2500,3000,3500,4000]),vk=pick([50,70,90,110,130]),v0=vk/3.6;
+  const tau=m*v0/F,L=m*v0*v0/(2*F),a=F/m,k=pick([2,3]);
+  return{intro:r`Une voiture de masse $m=${m}\ \mathrm{kg}$ roule à $v_0=${vk}\ \mathrm{km/h}$, soit $${tx(v0)}\ \mathrm{m/s}$, sur une route droite horizontale. Elle freine à partir de $t=0$ avec une force constante de valeur $F=${F}\ \mathrm{N}$. Les autres frottements sont négligés. On note $x$ l'axe de la route, orienté dans le sens du mouvement.`,qs:[
+    qcm('vt','trc',r`Quelle est l'expression de la vitesse $v(t)$ pendant le freinage ?`,r`$v(t)=v_0-\dfrac{F}{m}\,t$`,[r`$v(t)=v_0+\dfrac{F}{m}\,t$`,r`$v(t)=v_0-F\,t$`,r`$v(t)=\dfrac{F}{m}\,t$`],[
+      r`Forces : poids $m\vec{g}$ et réaction normale $\vec{N}$ (verticales, elles se compensent) et la force de freinage $-F\vec{e}_x$.`,
+      r`TRC selon $\vec{e}_x$ : $m\ddot x=-F$, donc $\dot x=v(t)=v_0-\dfrac{F}{m}t$.`]),
+    num('dec','trc',r`Calculer la valeur de la décélération $a=F/m$.`,a,'m/s²',[r`$ma=F$ donc $a=\dfrac{F}{m}=\dfrac{${F}}{${m}}=${tx(a)}\ \mathrm{m/s^2}$.`]),
+    num('tau','cine',r`Calculer la durée de freinage $\tau$.`,tau,'s',[
+      r`La voiture s'arrête quand $v(\tau)=0$ : $\tau=\dfrac{mv_0}{F}=\dfrac{${m}\times${tx(v0)}}{${F}}=${tx(tau)}\ \mathrm{s}$.`]),
+    num('L','cine',r`Calculer la distance de freinage $L$.`,L,'m',[
+      r`$x(t)=v_0t-\dfrac{F}{2m}t^2$, donc $L=x(\tau)=\dfrac{mv_0^2}{2F}=\dfrac{${m}\times${tx(v0)}^2}{2\times${F}}=${tx(L)}\ \mathrm{m}$.`]),
+    qcm('k','cine',r`La vitesse initiale est multipliée par $${k}$. Par quel facteur la distance de freinage $L$ est-elle multipliée ?`,r`$${k*k}$`,[r`$${k}$`,r`$${k**3}$`,'Elle est inchangée'],[
+      r`$L=\dfrac{mv_0^2}{2F}$ est proportionnelle à $v_0^2$ : elle est multipliée par $${k}^2=${k*k}$, alors que $\tau$ n'est multipliée que par $${k}$.`])
+  ]};
+}},
+
+{id:3,rom:'III',title:"Lancer parabolique d'un ballon",sk:['cine','trc'],gen(){
+  const al=pick([45,50,55,60]),h1=pick([1.8,2,2.2]),L=pick([4,4.5,5]),H=3.05;
+  const v0=Math.sqrt(G*L*L/(2*cos(al)**2*(h1+L*tan(al)-H))),t=L/(v0*cos(al)),zm=h1+(v0*sin(al))**2/(2*G),vz=v0*sin(al)-G*t;
+  return{intro:r`Lors d'un lancer franc, un ballon de masse $m=624\ \mathrm{g}$, assimilé à un point, est lancé depuis une hauteur $h_1=${tx(h1)}\ \mathrm{m}$ avec une vitesse $\vec{v}_0$ faisant un angle $\alpha=${al}^\circ$ avec l'horizontale. Le panier est à une distance horizontale $L=${tx(L)}\ \mathrm{m}$ et à une hauteur $H=3{,}05\ \mathrm{m}$. On prend $g=9{,}81\ \mathrm{m/s^2}$, sans frottement.`,qs:[
+    qcm('traj','cine',r`Quelle est l'équation de la trajectoire $z(x)$ ?`,r`$z=h_1+x\tan\alpha-\dfrac{g\,x^2}{2v_0^2\cos^2\alpha}$`,[
+      r`$z=h_1+x\tan\alpha+\dfrac{g\,x^2}{2v_0^2\cos^2\alpha}$`,
+      r`$z=h_1+x\tan\alpha-\dfrac{g\,x^2}{2v_0^2\sin^2\alpha}$`,
+      r`$z=h_1+x\tan\alpha-\dfrac{g\,x^2}{2v_0\cos\alpha}$`],[
+      r`TRC : $\vec{a}=\vec{g}$, soit $\ddot x=0$ et $\ddot z=-g$. Avec les conditions initiales : $x=v_0\cos\alpha\,t$ et $z=-\dfrac{g}{2}t^2+v_0\sin\alpha\,t+h_1$.`,
+      r`On élimine $t=\dfrac{x}{v_0\cos\alpha}$ : $z=h_1+x\tan\alpha-\dfrac{g\,x^2}{2v_0^2\cos^2\alpha}$.`]),
+    num('v0','cine',r`Calculer la vitesse initiale $v_0$ nécessaire pour atteindre le centre du panier.`,v0,'m/s',[
+      r`On impose $z(L)=H$ : $H=h_1+L\tan\alpha-\dfrac{gL^2}{2v_0^2\cos^2\alpha}$.`,
+      r`$v_0=\sqrt{\dfrac{gL^2}{2\cos^2\alpha\,(h_1+L\tan\alpha-H)}}=${tx(v0)}\ \mathrm{m/s}$.`]),
+    num('t','cine',r`Calculer la durée du vol jusqu'au panier.`,t,'s',[
+      r`$x=v_0\cos\alpha\;t$ donc $t=\dfrac{L}{v_0\cos\alpha}=\dfrac{${tx(L)}}{${tx(v0)}\times\cos ${al}^\circ}=${tx(t)}\ \mathrm{s}$.`]),
+    num('zm','cine',r`Calculer la hauteur maximale atteinte par le ballon (en mètres, par rapport au sol).`,zm,'m',[
+      r`Au sommet $\dot z=0$ : $t_s=\dfrac{v_0\sin\alpha}{g}$, d'où $z_{max}=h_1+\dfrac{(v_0\sin\alpha)^2}{2g}=${tx(zm)}\ \mathrm{m}$.`]),
+    num('vz','cine',r`Calculer la composante verticale de la vitesse $\dot z$ à l'arrivée au panier (signe compris).`,vz,'m/s',[
+      r`$\dot z(t)=v_0\sin\alpha-gt=${tx(v0*sin(al))}-9{,}81\times${tx(t)}=${tx(vz)}\ \mathrm{m/s}$.`,
+      vz<0?r`Elle est négative : le ballon descend en entrant dans le panier.`:r`Elle est positive : le ballon monte encore, ce qui rend le panier difficile.`]),
+    qcm('m','trc',r`Quelle est l'influence de la masse du ballon sur la trajectoire ?`,r`Aucune : $\vec{a}=\vec{g}$ ne dépend pas de $m$`,['La trajectoire est plus courte quand $m$ augmente','La trajectoire est plus haute quand $m$ augmente','Elle ne change que la durée du vol'],[
+      r`Le TRC donne $m\vec{a}=m\vec{g}$, la masse se simplifie.`])
+  ]};
+}},
+
+{id:4,rom:'IV',title:"Frottement solide et glissement",sk:['frot','proj','trc','cine'],gen(){
+  const al=pick([25,30,35,40]),mu=pick([.15,.2,.25,.3]),m=pick([3,5,8]),vt=pick([1.5,2,2.5]);
+  const a=G*(sin(al)-mu*cos(al)),ac=Math.atan(mu)/Math.PI*180,al2=Math.round(ac*.6),T=m*G*sin(al2),t=vt/a,d=vt*vt/(2*a);
+  return{intro:r`Une caisse de masse $m=${m}\ \mathrm{kg}$ est posée sur un plan incliné d'un angle $\alpha$ par rapport à l'horizontale. Le coefficient de frottement entre la caisse et le plan est $\mu=${tx(mu)}$ et $g=9{,}81\ \mathrm{m/s^2}$. Pour $\alpha=${al}^\circ$, la caisse glisse, lâchée sans vitesse initiale.`,qs:[
+    num('a','frot',r`Calculer l'accélération de la caisse pour $\alpha=${al}^\circ$.`,a,'m/s²',[
+      r`Base : $\vec{e}_x$ le long de la pente vers le bas, $\vec{e}_y$ normal au plan. Forces : poids $m\vec{g}$, réaction normale $\vec{N}$, frottement $\vec{T}$ opposé au glissement.`,
+      r`TRC selon $\vec{e}_y$ : $N=mg\cos\alpha$. Glissement : $T=\mu N=\mu mg\cos\alpha$.`,
+      r`TRC selon $\vec{e}_x$ : $ma=mg\sin\alpha-T$, donc $a=g(\sin\alpha-\mu\cos\alpha)=${tx(a)}\ \mathrm{m/s^2}$.`]),
+    num('ac','frot',r`À partir de quel angle $\alpha_c$ la caisse se met-elle à glisser ? Donner l'angle en degrés.`,ac,'°',[
+      r`Sans glissement $a=0$ et $T\le\mu N$ : $mg\sin\alpha\le\mu mg\cos\alpha$, soit $\tan\alpha\le\mu$.`,
+      r`$\alpha_c=\arctan\mu=\arctan(${tx(mu)})=${tx(ac)}^\circ$.`]),
+    num('T','proj',r`Pour $\alpha=${al2}^\circ$ la caisse ne glisse pas. Calculer la norme de la composante tangentielle $T$ de la réaction du support.`,T,'N',[
+      r`À l'équilibre, le TRC selon $\vec{e}_x$ donne $T=mg\sin\alpha=${m}\times9{,}81\times\sin ${al2}^\circ=${tx(T)}\ \mathrm{N}$.`,
+      r`On a bien $T\le\mu N=\mu mg\cos\alpha$ : pas de glissement.`]),
+    num('t','cine',r`Pour $\alpha=${al}^\circ$, au bout de quelle durée la vitesse atteint-elle $${tx(vt)}\ \mathrm{m/s}$ ?`,t,'s',[
+      r`Mouvement uniformément accéléré : $v(t)=at$, donc $t=\dfrac{v}{a}=\dfrac{${tx(vt)}}{${tx(a)}}=${tx(t)}\ \mathrm{s}$.`]),
+    num('d','cine',r`Quelle distance a-t-elle parcourue depuis son point de départ à cet instant ?`,d,'m',[
+      r`$x(t)=\dfrac{1}{2}at^2$, soit $d=\dfrac{v^2}{2a}=\dfrac{${tx(vt)}^2}{2\times${tx(a)}}=${tx(d)}\ \mathrm{m}$.`]),
+    qcm('m','trc','Quel est le rôle de la masse dans ce problème ?',r`Aucun : $m$ se simplifie dans le TRC`,['Elle augmente l\'accélération','Elle diminue l\'accélération','Elle fixe l\'angle critique'],[
+      r`$a=g(\sin\alpha-\mu\cos\alpha)$ et $\tan\alpha_c=\mu$ ne dépendent pas de $m$.`])
+  ]};
+}},
+
+{id:5,rom:'V',title:"Skieur sur une pente (téléski)",sk:['trc','proj','frot'],gen(){
+  const m=pick([70,80,95,100]),mu=pick([.1,.15,.2]),al=pick([20,25,30]),be=pick([30,35,40,45]);
+  const den=cos(be)+mu*sin(be),T=m*G*(sin(al)+mu*cos(al))/den,N=m*G*cos(al)-T*sin(be),a2=.2*T*den/m;
+  return{intro:r`Un skieur de masse $m=${m}\ \mathrm{kg}$ remonte une pente inclinée de $\alpha=${al}^\circ$ grâce à un téléski. La perche exerce une force de traction $\vec{T}$ de norme $T$ faisant un angle $\beta=${be}^\circ$ avec la pente. Le coefficient de frottement solide entre la neige et les skis est $\mu=${tx(mu)}$. On prend $\vec{e}_x$ le long de la pente vers le haut et $\vec{e}_y$ normal à la pente.`,qs:[
+    qcm('dir','frot','Dans quel sens est dirigée la composante tangentielle de la réaction de la neige ?','Vers le bas de la pente, opposée au glissement',['Vers le haut de la pente','Perpendiculaire à la pente','Elle est nulle'],[
+      r`Le frottement solide s'oppose toujours au glissement : le skieur monte, il est donc dirigé vers le bas de la pente, avec $f=\mu N$.`]),
+    qcm('acc','trc',r`Quelle est l'expression de l'accélération $\ddot x$ du skieur ?`,r`$\ddot x=\dfrac{T(\cos\beta+\mu\sin\beta)}{m}-g(\sin\alpha+\mu\cos\alpha)$`,[
+      r`$\ddot x=\dfrac{T(\cos\beta-\mu\sin\beta)}{m}-g(\sin\alpha+\mu\cos\alpha)$`,
+      r`$\ddot x=\dfrac{T(\cos\beta+\mu\sin\beta)}{m}-g(\sin\alpha-\mu\cos\alpha)$`,
+      r`$\ddot x=\dfrac{T\cos\beta}{m}-g\sin\alpha-\mu g\cos\alpha$`],[
+      r`Selon $\vec{e}_y$ : $N+T\sin\beta-mg\cos\alpha=0$, donc $N=mg\cos\alpha-T\sin\beta$.`,
+      r`Selon $\vec{e}_x$ : $m\ddot x=T\cos\beta-mg\sin\alpha-\mu N$.`,
+      r`En remplaçant $N$ : $\ddot x=\dfrac{T(\cos\beta+\mu\sin\beta)}{m}-g(\sin\alpha+\mu\cos\alpha)$.`]),
+    num('T','trc',r`Le skieur atteint une vitesse constante. Calculer la tension $T$ de la perche.`,T,'N',[
+      r`Vitesse constante : $\ddot x=0$, donc $T=\dfrac{mg(\sin\alpha+\mu\cos\alpha)}{\cos\beta+\mu\sin\beta}$.`,
+      r`$T=\dfrac{${m}\times9{,}81\times(\sin ${al}^\circ+${tx(mu)}\cos ${al}^\circ)}{\cos ${be}^\circ+${tx(mu)}\sin ${be}^\circ}=${tx(T)}\ \mathrm{N}$.`]),
+    num('N','proj',r`À vitesse constante, calculer la norme $N$ de la réaction normale de la neige.`,N,'N',[
+      r`$N=mg\cos\alpha-T\sin\beta=${tx(m*G*cos(al))}-${tx(T)}\times\sin ${be}^\circ=${tx(N)}\ \mathrm{N}$.`,
+      r`Elle est plus faible que $mg\cos\alpha$ car la perche tire le skieur vers le haut.`]),
+    num('a2','trc',r`La tension passe à $1{,}2$ fois sa valeur de vitesse constante. Calculer l'accélération du skieur.`,a2,'m/s²',[
+      r`Avec $T'=1{,}2\,T_0$ et $T_0$ qui annule l'accélération : $\ddot x=\dfrac{0{,}2\,T_0(\cos\beta+\mu\sin\beta)}{m}=${tx(a2)}\ \mathrm{m/s^2}$.`])
+  ]};
+}},
+
+{id:6,rom:'VI',title:"Lancer de projectile (TEC)",sk:['tec','trav','trc'],gen(){
+  const h=pick([30,40,50,60]),V0=pick([10,15,20]),m=pick([.3,.5,.8]),th=pick([30,45,60]);
+  const v1=Math.sqrt(V0*V0+2*G*h),zm=h+V0*V0/(2*G),zt=h+(V0*cos(th))**2/(2*G),Ec=.5*m*v1*v1,vt=V0*sin(th);
+  return{intro:r`Un projectile de masse $m=${tx(m)}\ \mathrm{kg}$, assimilé à un point, est lancé à $t=0$ d'un point A situé à $h=${h}\ \mathrm{m}$ au-dessus du sol, avec une vitesse initiale de norme $V_0=${V0}\ \mathrm{m/s}$. Tout frottement est négligé et $g=9{,}81\ \mathrm{m/s^2}$.`,qs:[
+    num('v1','tec',r`La vitesse initiale est verticale dirigée vers le bas. Calculer directement la vitesse d'impact au sol.`,v1,'m/s',[
+      r`Seul le poids travaille. TEC entre A et le sol : $\dfrac12mv^2-\dfrac12mV_0^2=mgh$.`,
+      r`$v=\sqrt{V_0^2+2gh}=\sqrt{${V0}^2+2\times9{,}81\times${h}}=${tx(v1)}\ \mathrm{m/s}$.`]),
+    num('zm','tec',r`Le projectile est lancé vers le haut avec la même vitesse. Calculer son altitude maximale (par rapport au sol).`,zm,'m',[
+      r`TEC entre A et le sommet où $v=0$ : $-\dfrac12mV_0^2=-mg(z_{max}-h)$.`,
+      r`$z_{max}=h+\dfrac{V_0^2}{2g}=${tx(zm)}\ \mathrm{m}$.`]),
+    qcm('same','tec',r`Comparée au lancer vers le bas, la vitesse d'impact du lancer vers le haut est :`,'Identique',['Plus grande','Plus petite','Dépend de la masse'],[
+      r`Le travail du poids ne dépend que de la différence d'altitude entre A et le sol, pas du chemin suivi. La vitesse d'impact est donc la même, et la vitesse en repassant par A vaut aussi $V_0$.`]),
+    num('zt','tec',r`Le projectile est lancé vers le haut dans une direction inclinée de $\theta=${th}^\circ$ par rapport à la verticale. Calculer l'altitude maximale atteinte.`,zt,'m',[
+      r`Le TEC seul ne suffit pas : il faut connaître la vitesse au sommet. Le TRC montre que la composante horizontale $V_0\sin\theta$ se conserve (le poids est vertical), et elle est la seule qui reste au sommet.`,
+      r`TEC entre A et le sommet : $\dfrac12mV_0^2\sin^2\theta-\dfrac12mV_0^2=-mg(z_{max}-h)$, soit $z_{max}=h+\dfrac{V_0^2\cos^2\theta}{2g}=${tx(zt)}\ \mathrm{m}$.`]),
+    num('vt','trc',r`Quelle est la vitesse du projectile au sommet de la trajectoire, dans ce même lancer incliné ?`,vt,'m/s',[
+      r`Au sommet, il ne reste que la composante horizontale, constante : $v=V_0\sin\theta=${V0}\times\sin ${th}^\circ=${tx(vt)}\ \mathrm{m/s}$.`]),
+    num('ec','trav',r`Calculer l'énergie cinétique du projectile à l'impact lors du lancer vers le bas.`,Ec,'J',[
+      r`$E_c=\dfrac12mv^2=\dfrac12\times${tx(m)}\times${tx(v1)}^2=${tx(Ec)}\ \mathrm{J}$.`,
+      r`On retrouve aussi $E_c=\dfrac12mV_0^2+mgh$.`])
+  ]};
+}},
+
+{id:7,rom:'VII',title:"Freinage et distance d'arrêt (TEC)",sk:['tec','trav','frot'],gen(){
+  const m=pick([700,850,1000,1200]),mu=pick([.3,.35,.5,.7]),vk=pick([50,90,130]),v=vk/3.6;
+  const Fm=mu*m*G,L=v*v/(2*mu*G),W=-.5*m*v*v;
+  return{intro:r`Une voiture de masse $m=${m}\ \mathrm{kg}$ roule à $${vk}\ \mathrm{km/h}$ (soit $${tx(v)}\ \mathrm{m/s}$) sur une route horizontale. La seule force horizontale est le frottement solide du sol sur les pneus, de coefficient $\mu=${tx(mu)}$. On prend $g=9{,}81\ \mathrm{m/s^2}$.`,qs:[
+    num('Fm','frot',r`Calculer la force de freinage maximale $F_{max}$ avant que les roues ne glissent.`,Fm,'N',[
+      r`Sans glissement $F\le\mu N$ avec $N=mg$ (équilibre vertical). Donc $F_{max}=\mu mg=${tx(mu)}\times${m}\times9{,}81=${tx(Fm)}\ \mathrm{N}$.`]),
+    num('L','tec',r`En déduire la distance d'arrêt minimale $L_{min}$ par le TEC.`,L,'m',[
+      r`TEC entre le début du freinage et l'arrêt : $0-\dfrac12mv^2=-F_{max}L_{min}$.`,
+      r`$L_{min}=\dfrac{mv^2}{2\mu mg}=\dfrac{v^2}{2\mu g}=\dfrac{${tx(v)}^2}{2\times${tx(mu)}\times9{,}81}=${tx(L)}\ \mathrm{m}$.`]),
+    num('W','trav',r`Calculer le travail de la force de freinage maximale pendant cette distance (signe compris).`,W,'J',[
+      r`$W=-F_{max}L_{min}=-\dfrac12mv^2=-\dfrac12\times${m}\times${tx(v)}^2=${tx(W)}\ \mathrm{J}$.`,
+      r`Il est négatif car la force s'oppose au déplacement et toute l'énergie cinétique est dissipée.`]),
+    num('wet','tec',r`Sur route mouillée le coefficient de frottement est divisé par 2. Calculer la nouvelle distance d'arrêt minimale.`,2*L,'m',[
+      r`$L_{min}=\dfrac{v^2}{2\mu g}$ est inversement proportionnelle à $\mu$ : elle est doublée, soit $${tx(2*L)}\ \mathrm{m}$.`]),
+    qcm('mass','tec',r`$L_{min}$ dépend-elle de la masse de la voiture ?`,r`Non : $m$ se simplifie entre $E_c$ et $F_{max}$`,[r`Oui, elle augmente avec $m$`,r`Oui, elle diminue quand $m$ augmente`,r`Oui, mais seulement à grande vitesse`],[
+      r`$E_c=\dfrac12mv^2$ et $F_{max}=\mu mg$ sont toutes deux proportionnelles à $m$ : le rapport n'en dépend pas.`])
+  ]};
+}},
+
+{id:8,rom:'VIII',title:"Vitesse minimale sur un plan incliné",sk:['tec','trav','frot','proj'],gen(){
+  const h=pick([1,1.5,2,2.5]),d=pick([3,4,5]),mu=pick([.1,.2,.3]),m=pick([.2,.5,1]);
+  const al=Math.atan(h/d)/Math.PI*180,f=mu*m*G*cos(al),W=-mu*m*G*d,v0=Math.sqrt(2*G*(h+mu*d)),v0n=Math.sqrt(2*G*h);
+  return{intro:r`Un palet de masse $m=${tx(m)}\ \mathrm{kg}$ est lancé depuis M$_0$ avec une vitesse $v_0$ et glisse sur un plan incliné jusqu'en M$_1$ où sa vitesse s'annule. M$_1$ est situé à une hauteur $h=${tx(h)}\ \mathrm{m}$ au-dessus de M$_0$ et à une distance horizontale $d=${d}\ \mathrm{m}$. Le frottement solide a pour coefficient $\mu=${tx(mu)}$. On prend $g=9{,}81\ \mathrm{m/s^2}$.`,qs:[
+    num('al','proj',r`Calculer l'angle d'inclinaison $\alpha$ du plan, en degrés.`,al,'°',[
+      r`$\tan\alpha=\dfrac{h}{d}$ donc $\alpha=\arctan\dfrac{${tx(h)}}{${d}}=${tx(al)}^\circ$.`]),
+    num('f','frot',r`Calculer la norme de la force de frottement $f$.`,f,'N',[
+      r`Selon la normale au plan : $N=mg\cos\alpha$. Glissement : $f=\mu N=\mu mg\cos\alpha=${tx(mu)}\times${tx(m)}\times9{,}81\times\cos ${tx(al)}^\circ=${tx(f)}\ \mathrm{N}$.`]),
+    num('W','trav',r`Calculer le travail de la force de frottement de M$_0$ à M$_1$.`,W,'J',[
+      r`La longueur parcourue est $\dfrac{d}{\cos\alpha}$, donc $W(\vec f)=-f\dfrac{d}{\cos\alpha}=-\mu mg\,d=-${tx(mu)}\times${tx(m)}\times9{,}81\times${d}=${tx(W)}\ \mathrm{J}$.`]),
+    num('v0','tec',r`Calculer la vitesse $v_0$ minimale pour atteindre M$_1$.`,v0,'m/s',[
+      r`TEC de M$_0$ à M$_1$ (la réaction normale ne travaille pas) : $0-\dfrac12mv_0^2=-mgh-\mu mg\,d$.`,
+      r`$v_0=\sqrt{2g(h+\mu d)}=\sqrt{2\times9{,}81\times(${tx(h)}+${tx(mu)}\times${d})}=${tx(v0)}\ \mathrm{m/s}$.`]),
+    num('v0n','tec',r`Quelle serait cette vitesse sans frottement ?`,v0n,'m/s',[
+      r`Avec $\mu=0$ : $v_0=\sqrt{2gh}=\sqrt{2\times9{,}81\times${tx(h)}}=${tx(v0n)}\ \mathrm{m/s}$.`])
+  ]};
+}},
+
+{id:9,rom:'IX',title:"Piste, frottements et ressort",sk:['tec','trav'],gen(){
+  const rr=pick([2,2.5,3]),L=pick([2,2.5,3]),mu=pick([.2,.25,.3]),m=pick([.5,1,2]);
+  const vB=Math.sqrt(2*G*rr),W=-mu*m*G*L,vC=Math.sqrt(2*G*(rr-mu*L)),vB2=Math.sqrt(2*G*(rr-2*mu*L)),h=rr-2*mu*L;
+  return{intro:r`Une piste est formée d'un quart de cercle lisse AB de rayon $r=${tx(rr)}\ \mathrm{m}$, d'une portion horizontale BC de longueur $L=${tx(L)}\ \mathrm{m}$ avec frottement ($\mu=${tx(mu)}$), puis d'un ressort en CD sans frottement. Un bloc ponctuel de masse $m=${tx(m)}\ \mathrm{kg}$ part de A sans vitesse initiale, comprime le ressort puis revient (on admet qu'il repasse par C avec la même vitesse qu'à l'aller). On prend $g=9{,}81\ \mathrm{m/s^2}$.`,qs:[
+    num('vB','tec',r`Calculer la vitesse $v_B$ au point B.`,vB,'m/s',[
+      r`Sur AB, la réaction ne travaille pas (piste lisse). TEC : $\dfrac12mv_B^2=mgr$, donc $v_B=\sqrt{2gr}=${tx(vB)}\ \mathrm{m/s}$.`]),
+    num('Wf','trav',r`Calculer le travail du frottement entre B et C (signe compris).`,W,'J',[
+      r`$N=mg$ sur BC, donc $f=\mu mg$ et $W=-\mu mg\,L=-${tx(mu)}\times${tx(m)}\times9{,}81\times${tx(L)}=${tx(W)}\ \mathrm{J}$.`]),
+    num('vC','tec',r`Calculer la vitesse $v_C$ au point C.`,vC,'m/s',[
+      r`TEC de B à C : $\dfrac12mv_C^2-\dfrac12mv_B^2=-\mu mgL$.`,
+      r`$v_C=\sqrt{v_B^2-2\mu gL}=\sqrt{2g(r-\mu L)}=${tx(vC)}\ \mathrm{m/s}$.`]),
+    num('vB2','tec',r`Au retour, calculer la vitesse $v_B'$ du bloc en repassant par B.`,vB2,'m/s',[
+      r`De C à B, le frottement dissipe de nouveau $\mu mgL$ : $\dfrac12mv_B'^2=\dfrac12mv_C^2-\mu mgL$.`,
+      r`$v_B'=\sqrt{2g(r-2\mu L)}=${tx(vB2)}\ \mathrm{m/s}$.`]),
+    num('h','tec',r`À quelle hauteur $h$ au-dessus de BC le bloc remonte-t-il sur le quart de cercle ?`,h,'m',[
+      r`Sur le quart de cercle lisse : $\dfrac12mv_B'^2=mgh$, donc $h=\dfrac{v_B'^2}{2g}=r-2\mu L=${tx(h)}\ \mathrm{m}$.`])
+  ]};
+}},
+
+{id:10,rom:'X',title:"Mouvement d'un pendule simple",sk:['tec','pend'],gen(){
+  const L=pick([.5,.8,1,1.2,1.5]),m=pick([.1,.2,.5]),th0=pick([40,50,60,70]),th1=pick([10,15,20,25]),th2=pick([20,30,45,60]);
+  const thm=pick([40,50,60,70]),v0=Math.round(Math.sqrt(2*G*L*(1-cos(thm)))*10)/10,thmax=Math.acos(1-v0*v0/(2*G*L))/Math.PI*180;
+  const vmax=Math.sqrt(2*G*L),v90=Math.sqrt(2*G*L*cos(th2)),vth=Math.sqrt(2*G*L*(cos(th1)-cos(th0))),vb=Math.sqrt(2*G*L*(1-cos(th0)));
+  return{intro:r`Un pendule simple est formé d'une bille ponctuelle de masse $m=${tx(m)}\ \mathrm{kg}$ au bout d'un fil idéal de longueur $L=${tx(L)}\ \mathrm{m}$ attaché en un point fixe O. Il oscille dans un plan vertical, sans frottement. La position est repérée par l'angle $\theta$ par rapport à la verticale descendante. On prend $g=9{,}81\ \mathrm{m/s^2}$.`,qs:[
+    num('vmax','tec',r`La bille est lâchée sans vitesse, fil tendu horizontalement ($\theta_0=90^\circ$). Calculer sa vitesse maximale.`,vmax,'m/s',[
+      r`La tension est perpendiculaire au déplacement : elle ne travaille pas. TEC : $\dfrac12mv^2=mgL\cos\theta$.`,
+      r`$v(\theta)=\sqrt{2gL\cos\theta}$, maximale en $\theta=0$ : $v_{max}=\sqrt{2gL}=${tx(vmax)}\ \mathrm{m/s}$.`]),
+    num('v90','tec',r`Dans ce même lâcher horizontal, calculer la vitesse de la bille quand $\theta=${th2}^\circ$.`,v90,'m/s',[
+      r`$v=\sqrt{2gL\cos\theta}=\sqrt{2\times9{,}81\times${tx(L)}\times\cos ${th2}^\circ}=${tx(v90)}\ \mathrm{m/s}$.`]),
+    num('vth','tec',r`La bille est maintenant lâchée sans vitesse depuis $\theta_0=${th0}^\circ$. Calculer sa vitesse en $\theta=${th1}^\circ$.`,vth,'m/s',[
+      r`Le poids fournit $W=mgL(\cos\theta-\cos\theta_0)$ (la bille descend). TEC : $\dfrac12mv^2=mgL(\cos\theta-\cos\theta_0)$.`,
+      r`$v=\sqrt{2gL(\cos ${th1}^\circ-\cos ${th0}^\circ)}=${tx(vth)}\ \mathrm{m/s}$.`]),
+    num('vb','tec',r`Pour ce même lâcher depuis $\theta_0=${th0}^\circ$, calculer la vitesse au point le plus bas.`,vb,'m/s',[
+      r`En $\theta=0$ : $v=\sqrt{2gL(1-\cos\theta_0)}=${tx(vb)}\ \mathrm{m/s}$.`]),
+    qcm('eq','pend',r`Quelle équation différentielle le TPC (théorème de la puissance cinétique) donne-t-il pour $\theta(t)$ ?`,r`$\ddot\theta+\dfrac{g}{L}\sin\theta=0$`,[r`$\ddot\theta+\dfrac{g}{L}\cos\theta=0$`,r`$\ddot\theta+\dfrac{L}{g}\sin\theta=0$`,r`$\ddot\theta-\dfrac{g}{L}\sin\theta=0$`],[
+      r`$E_c=\dfrac12mL^2\dot\theta^2$, donc $\dfrac{dE_c}{dt}=mL^2\dot\theta\ddot\theta$.`,
+      r`Puissance du poids : $P=-mgL\sin\theta\,\dot\theta$ (la tension ne fournit aucune puissance).`,
+      r`En égalant et en simplifiant par $mL^2\dot\theta$ : $\ddot\theta+\dfrac{g}{L}\sin\theta=0$.`]),
+    num('thmax','tec',r`À $t=0$ on lance la bille depuis $\theta=0$ avec la vitesse $v_0=${tx(v0)}\ \mathrm{m/s}$. Calculer l'angle maximal atteint, en degrés.`,thmax,'°',[
+      r`TEC entre $\theta=0$ et $\theta_{max}$ (vitesse nulle) : $-\dfrac12mv_0^2=-mgL(1-\cos\theta_{max})$.`,
+      r`$\cos\theta_{max}=1-\dfrac{v_0^2}{2gL}$, soit $\theta_{max}=${tx(thmax)}^\circ$.`])
+  ]};
+}}
+];
+
+const KEY='stpi1a.meca_ds1.v1';
+let S=null;
+try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+S=S||{};S.q=S.q||{};S.sk=S.sk||{};S.ex=S.ex||{};S.tests=S.tests||[];
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const rec=(e,q,ok)=>{
+  [['q',e.id+'.'+q.k],['sk',q.sk],['ex',e.id]].forEach(([c,k])=>{const x=S[c][k]||(S[c][k]={a:0,o:0});x.a++;if(ok)x.o++});
+  save();
+};
+const pct=x=>x&&x.a?Math.round(100*x.o/x.a):null;
+const lab=p=>p===null?'non évalué':p+' %';
+
+const app=document.getElementById('app');
+const typeset=el=>{
+  if(window.renderMathInElement)try{renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}
+};
+const show=h=>{app.innerHTML=h;typeset(app);window.scrollTo(0,0)};
+
+const judge=(q,v)=>{
+  if(q.t==='qcm')return +v===q.c;
+  const x=parseFloat(String(v).replace(/\s/g,'').replace(',','.'));
+  return isFinite(x)&&Math.abs(x-q.a)<=Math.max(Math.abs(q.a)*q.tol,1e-6);
+};
+const ansText=q=>q.t==='qcm'?q.o[q.c]:nf(q.a)+(q.u?' '+q.u:'');
+const qInput=(q,i)=>q.t==='qcm'
+  ?`<div class="opts">${q.o.map((o,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}"><span>${o}</span></label>`).join('')}</div>`
+  :`<div class="inrow"><input class="ans" inputmode="decimal" autocomplete="off" placeholder="Votre réponse" aria-label="Réponse"><span class="unit">${q.u||''}</span></div>`;
+const readAns=li=>{
+  const c=li.querySelector('input[type=radio]:checked');
+  if(c)return c.value;
+  const t=li.querySelector('input.ans');
+  return t?t.value.trim():'';
+};
+const solHtml=q=>q.sol.map(p=>`<p>${p}</p>`).join('');
+const bar=(l,x,href)=>{
+  const p=pct(x),tag=href?`a href="${href}"`:'div',end=href?'a':'div';
+  return `<${tag} class="brow"><span class="bl">${l}</span><span class="bar"><i style="width:${p||0}%"></i></span><span class="bv">${lab(p)}</span></${end}>`;
+};
+
+function dash(){
+  const tot=Object.values(S.ex).reduce((s,x)=>({a:s.a+x.a,o:s.o+x.o}),{a:0,o:0});
+  const sks=Object.keys(SK).map(k=>({k,x:S.sk[k]||{a:0,o:0}}));
+  const weak=sks.filter(s=>s.x.a>=2&&s.x.o/s.x.a<.7).sort((a,b)=>a.x.o/a.x.a-b.x.o/b.x.a);
+  const unk=sks.filter(s=>s.x.a<2);
+  const recs=[];
+  weak.forEach(w=>EX.filter(e=>e.sk.includes(w.k)).sort((a,b)=>(pct(S.ex[a.id])||0)-(pct(S.ex[b.id])||0)).forEach(e=>{if(!recs.includes(e)&&recs.length<4)recs.push(e)}));
+  const last=S.tests[S.tests.length-1];
+  let diag;
+  if(!tot.a)diag=`<p class="lead" style="margin-top:0">Aucune donnée pour l'instant. Le plus efficace pour démarrer est le test de positionnement : 20 questions qui couvrent les exercices I à X et indiquent quoi cibler.</p><div class="ctas"><a class="btn-primary" href="#test">Passer le test</a><a class="btn-ghost" href="#exercices">Choisir un exercice</a></div>`;
+  else{
+    diag=weak.length
+      ?`<p class="lead" style="margin-top:0">Points faibles détectés : ${weak.map(w=>`<b>${SK[w.k]}</b> (${pct(w.x)} %)`).join(', ')}.</p>
+        <p class="lead">Exercices à retravailler en priorité : ${recs.map(e=>`<a href="#ex${e.id}" style="text-decoration:underline">${e.rom}</a>`).join(', ')}.</p>`
+      :`<p class="lead" style="margin-top:0">${tot.a<8?"Encore peu de réponses pour conclure. Continuez, l'analyse se précise à partir de quelques questions par compétence.":"Aucun point faible marqué pour l'instant, bon travail."}</p>`;
+    if(unk.length&&tot.a>=3)diag+=`<p class="lead">Pas encore assez de données sur : ${unk.map(u=>SK[u.k]).join(', ')}.</p>`;
+  }
+  show(`<section class="wrap">
+    <h1>DS1 de mécanique du point</h1>
+    <p class="lead">Entraînement aux exercices I à X des TD 1 à 6 : relation fondamentale (TRC), théorème de l'énergie cinétique (TEC), frottement solide et pendule. Les énoncés sont tirés au hasard et chaque réponse est calculée en direct.</p>
+    <div class="grid" style="margin-top:32px">
+      <div class="card"><div class="big">${tot.a?Math.round(100*tot.o/tot.a)+' %':'-'}</div><div class="cap">Taux de réussite global</div></div>
+      <div class="card"><div class="big">${tot.a}</div><div class="cap">Questions traitées</div></div>
+      <div class="card"><div class="big">${Object.keys(S.ex).length}/${EX.length}</div><div class="cap">Exercices abordés</div></div>
+    </div>
+    <h2>Analyse des points faibles</h2>
+    <div class="card">${diag}</div>
+    ${last?`<p class="note">Dernier test de positionnement : ${last.s}/${last.n}, le ${new Date(last.d).toLocaleDateString('fr-FR')}. <a href="#test" style="text-decoration:underline">Le refaire</a></p>`:''}
+    <h2>Réussite par compétence</h2>
+    <div class="card">${sks.map(s=>bar(SK[s.k],s.x)).join('')}</div>
+    <h2>Réussite par exercice</h2>
+    <div class="card">${EX.map(e=>bar(`${e.rom}. ${e.title}`,S.ex[e.id],'#ex'+e.id)).join('')}</div>
+    <div class="ctas"><button class="btn-ghost sm" data-act="reset">Effacer mes statistiques</button></div>
+    <p class="note">Les statistiques sont enregistrées dans ce navigateur uniquement.</p>
+  </section>`);
+}
+
+function list(){
+  show(`<section class="wrap">
+    <h1>Exercices</h1>
+    <p class="lead">Choisissez l'exercice à travailler. Chaque clic sur « Nouvel énoncé » tire de nouvelles valeurs.</p>
+    <div class="grid" style="margin-top:32px">${EX.map(e=>`<a class="card ex-card" href="#ex${e.id}"><span class="rom">EXERCICE ${e.rom}</span><span class="t">${e.title}</span><div class="chips">${e.sk.slice(0,3).map(k=>`<span class="tag">${SK[k]}</span>`).join('')}</div><span class="r">Réussite : ${lab(pct(S.ex[e.id]))}</span></a>`).join('')}</div>
+  </section>`);
+}
+
+let cur=null;
+function renderEx(id){
+  const e=EX.find(x=>x.id===id);
+  if(!e)return list();
+  const inst=e.gen();
+  cur={e,inst,rec:{}};
+  show(`<section class="wrap">
+    <a class="back" href="#exercices">Tous les exercices</a>
+    <div class="head"><span class="rom">${e.rom}</span><div><h1>${e.title}</h1><div class="chips">${e.sk.map(k=>`<span class="tag">${SK[k]}</span>`).join('')}</div></div></div>
+    <p class="rate">Taux de réussite sur cet exercice : <b id="rate">${lab(pct(S.ex[id]))}</b></p>
+    <div class="intro">${inst.intro}</div>
+    <ol class="qs">${inst.qs.map((q,i)=>`<li class="q" data-i="${i}"><div class="qt">${q.q}</div>${qInput(q,i)}<div class="btns"><button class="btn-primary sm" data-act="chk">Vérifier</button><button class="btn-ghost sm" data-act="sol">Correction</button></div><div class="fb"></div><div class="sol" hidden></div></li>`).join('')}</ol>
+    <div class="ctas"><button class="btn-primary" data-act="new">Nouvel énoncé</button><button class="btn-ghost" data-act="all">Tout corriger</button></div>
+    <p class="note">Valeurs tirées au hasard, réponses calculées en direct, tolérance de 2 %. Ouvrir la correction avant d'avoir répondu compte comme un échec.</p>
+  </section>`);
+}
+
+const upd=()=>{const x=document.getElementById('rate');if(x)x.textContent=lab(pct(S.ex[cur.e.id]))};
+function openSol(li,q,force){
+  const s=li.querySelector('.sol');
+  if(force||s.hidden){s.innerHTML=solHtml(q);s.hidden=false;typeset(s)}else s.hidden=true;
+}
+function exAct(a,li){
+  const i=li?+li.dataset.i:0,q=li?cur.inst.qs[i]:null;
+  if(a==='chk'){
+    const v=readAns(li),fb=li.querySelector('.fb');
+    if(v===''){fb.className='fb';fb.textContent='Saisissez une réponse avant de vérifier.';return}
+    const ok=judge(q,v);
+    if(!cur.rec[i]){cur.rec[i]=1;rec(cur.e,q,ok);upd()}
+    li.classList.remove('good','bad');li.classList.add(ok?'good':'bad');
+    fb.className='fb '+(ok?'ok':'ko');
+    fb.innerHTML=ok?'Correct.':`Incorrect. Réponse attendue : <b>${ansText(q)}</b>`;
+    typeset(fb);
+    if(!ok)openSol(li,q,true);
+  }else if(a==='sol'){
+    if(!cur.rec[i]){cur.rec[i]=1;rec(cur.e,q,false);upd()}
+    openSol(li,q,false);
+  }else if(a==='all'){
+    app.querySelectorAll('.q').forEach((l,k)=>{
+      const qq=cur.inst.qs[k];
+      if(!cur.rec[k]){cur.rec[k]=1;rec(cur.e,qq,false)}
+      openSol(l,qq,true);
+    });
+    upd();
+  }
+}
+
+let T=null;
+function testHome(){
+  const last=S.tests[S.tests.length-1];
+  show(`<section class="wrap narrow">
+    <h1>Test de positionnement</h1>
+    <p class="lead">20 questions tirées des exercices I à X (deux par exercice), avec des valeurs aléatoires. Aucune correction pendant le test. À la fin vous obtenez votre score par compétence, par exercice et la liste des points à cibler en priorité.</p>
+    <div class="card" style="margin-top:28px"><p style="font-size:14.5px;color:var(--t2)">Prévoyez environ 25 minutes, une calculatrice et $g=9{,}81\\ \\mathrm{m/s^2}$. Répondez avec 3 chiffres significatifs, une tolérance de 2 % est appliquée.</p></div>
+    <div class="ctas"><button class="btn-primary" data-act="start">Commencer le test</button></div>
+    ${last?`<p class="note">Dernier résultat : ${last.s}/${last.n}, le ${new Date(last.d).toLocaleDateString('fr-FR')}.</p>`:''}
+  </section>`);
+}
+function startTest(){
+  const qs=shuffle(EX.flatMap(e=>{const g=e.gen();return shuffle(g.qs).slice(0,2).map(q=>({e,intro:g.intro,q}))}));
+  T={qs,i:0,res:[]};
+  qTest();
+}
+function qTest(){
+  const t=T.qs[T.i];
+  show(`<section class="wrap narrow">
+    <div class="prog"><span>Question ${T.i+1} sur ${T.qs.length}</span><span class="bar"><i style="width:${100*T.i/T.qs.length}%"></i></span></div>
+    <div class="label">Exercice ${t.e.rom} : ${t.e.title}</div>
+    <div class="intro">${t.intro}</div>
+    <ol class="qs one"><li class="q" data-i="0"><div class="qt">${t.q.q}</div>${qInput(t.q,0)}<div class="fb"></div></li></ol>
+    <div class="ctas"><button class="btn-primary" data-act="tnext">Valider</button><button class="btn-ghost" data-act="tskip">Passer</button></div>
+  </section>`);
+  const f=app.querySelector('input.ans');if(f)f.focus();
+}
+function tAct(a){
+  const li=app.querySelector('.q'),t=T.qs[T.i];
+  let ok=false,v='';
+  if(a==='tnext'){
+    v=readAns(li);
+    if(v===''){const fb=li.querySelector('.fb');fb.className='fb';fb.textContent='Saisissez une réponse ou passez la question.';return}
+    ok=judge(t.q,v);
+  }
+  T.res.push({t,v,ok});
+  T.i++;
+  if(T.i<T.qs.length)qTest();else endTest();
+}
+function endTest(){
+  const bySk={},byEx={};
+  T.res.forEach(x=>{
+    rec(x.t.e,x.t.q,x.ok);
+    const s=bySk[x.t.q.sk]||(bySk[x.t.q.sk]={a:0,o:0});s.a++;if(x.ok)s.o++;
+    const e=byEx[x.t.e.id]||(byEx[x.t.e.id]={a:0,o:0});e.a++;if(x.ok)e.o++;
+  });
+  const score=T.res.filter(x=>x.ok).length;
+  S.tests.push({d:Date.now(),s:score,n:T.res.length});S.tests=S.tests.slice(-5);save();
+  const ratio=score/T.res.length;
+  const lvl=ratio>=.85?"Base solide, passez aux points ci-dessous pour viser la perfection.":ratio>=.6?"Bases correctes mais à consolider sur certains points.":"Des notions importantes sont à retravailler avant le DS.";
+  const weakSk=Object.keys(bySk).filter(k=>bySk[k].o/bySk[k].a<.6).sort((a,b)=>bySk[a].o/bySk[a].a-bySk[b].o/bySk[b].a);
+  const weakEx=EX.filter(e=>byEx[e.id]&&byEx[e.id].o<byEx[e.id].a).sort((a,b)=>byEx[a.id].o-byEx[b.id].o);
+  show(`<section class="wrap narrow">
+    <h1>Résultat du test</h1>
+    <div class="grid2" style="margin-top:28px"><div class="card"><div class="big">${score}/${T.res.length}</div><div class="cap">${lvl}</div></div>
+    <div class="card"><div style="font-size:14.5px;line-height:1.7;color:var(--t2)">${weakSk.length?`<b style="color:#fff">À cibler :</b> ${weakSk.map(k=>SK[k]).join(', ')}.`:'Aucune compétence en dessous de 60 %.'}<br>${weakEx.length?`<b style="color:#fff">Exercices conseillés :</b> ${weakEx.slice(0,5).map(e=>`<a href="#ex${e.id}" style="text-decoration:underline">${e.rom}</a>`).join(', ')}.`:''}</div></div></div>
+    <h2>Par compétence</h2><div class="card">${Object.keys(SK).filter(k=>bySk[k]).map(k=>bar(SK[k],bySk[k])).join('')}</div>
+    <h2>Par exercice</h2><div class="card">${EX.map(e=>bar(`${e.rom}. ${e.title}`,byEx[e.id],'#ex'+e.id)).join('')}</div>
+    <h2>Correction détaillée</h2>
+    ${T.res.map((x,i)=>`<details><summary><span>${i+1}. Exercice ${x.t.e.rom}</span><span class="${x.ok?'j':'f'}">${x.ok?'Juste':'Faux'}</span></summary><div class="det"><div class="intro" style="margin-top:0">${x.t.intro}</div><div class="qt" style="margin-top:14px">${x.t.q.q}</div><p style="margin:10px 0;color:var(--t2)">Votre réponse : ${x.v===''?'aucune':(x.t.q.t==='qcm'?x.t.q.o[+x.v]:x.v)}. Attendu : <b style="color:#fff">${ansText(x.t.q)}</b></p><div class="sol">${solHtml(x.t.q)}</div></div></details>`).join('')}
+    <div class="ctas"><button class="btn-primary" data-act="start">Refaire un test</button><a class="btn-ghost" href="#dashboard">Tableau de bord</a></div>
+  </section>`);
+  T=null;
+}
+
+function memo(){
+  show(`<section class="wrap">
+    <h1>Formules à connaître</h1>
+    <p class="lead">Rappel des outils utilisés dans les exercices I à X.</p>
+    <div class="grid2 memo" style="margin-top:32px">
+      <div class="card"><h3>Base orthonormée directe</h3>
+        <p>$\\vec{e}_x\\wedge\\vec{e}_y=\\vec{e}_z$, $\\vec{e}_y\\wedge\\vec{e}_z=\\vec{e}_x$, $\\vec{e}_z\\wedge\\vec{e}_x=\\vec{e}_y$</p>
+        <p>$\\vec{e}_i\\cdot\\vec{e}_j=\\delta_{ij}$ (1 si $i=j$, 0 sinon)</p></div>
+      <div class="card"><h3>Cinématique à accélération constante</h3>
+        <p>$v(t)=v_0+at$ et $x(t)=x_0+v_0t+\\dfrac12at^2$</p>
+        <p>$v^2-v_0^2=2a(x-x_0)$</p></div>
+      <div class="card"><h3>TRC (relation fondamentale)</h3>
+        <p>$m\\vec{a}=\\sum\\vec{F}_{ext}$, à projeter sur chaque axe de la base choisie.</p>
+        <p>Poids : $m\\vec{g}$. Réaction du support : $\\vec{R}=\\vec{N}+\\vec{T}$.</p></div>
+      <div class="card"><h3>Frottement solide (Coulomb)</h3>
+        <p>Avec glissement : $T=\\mu N$, opposée à la vitesse.</p>
+        <p>Sans glissement : $T\\le\\mu N$.</p></div>
+      <div class="card"><h3>Travail et puissance</h3>
+        <p>Force constante : $W_{A\\to B}(\\vec{F})=\\vec{F}\\cdot\\overrightarrow{AB}$</p>
+        <p>Poids : $W=-mg\\,(z_B-z_A)$ ; réaction normale : $W=0$</p>
+        <p>$P=\\vec{F}\\cdot\\vec{v}$</p></div>
+      <div class="card"><h3>TEC et TPC</h3>
+        <p>$\\Delta E_c=E_c(B)-E_c(A)=\\sum W_{A\\to B}(\\vec{F})$ avec $E_c=\\dfrac12mv^2$</p>
+        <p>$\\dfrac{dE_c}{dt}=\\sum P(\\vec{F})$</p>
+        <p>Le TEC relie vitesses et positions sans le temps ; le TRC donne accélération et équations horaires.</p></div>
+      <div class="card"><h3>Pendule simple</h3>
+        <p>$v^2=2gL(\\cos\\theta-\\cos\\theta_0)$</p>
+        <p>$\\ddot\\theta+\\dfrac{g}{L}\\sin\\theta=0$, et pour $\\theta$ petit : $\\ddot\\theta+\\dfrac{g}{L}\\theta=0$</p></div>
+      <div class="card"><h3>Projectile sans frottement</h3>
+        <p>$x=v_0\\cos\\alpha\\,t$, $z=-\\dfrac12gt^2+v_0\\sin\\alpha\\,t+h$</p>
+        <p>$z=h+x\\tan\\alpha-\\dfrac{g\\,x^2}{2v_0^2\\cos^2\\alpha}$</p></div>
+    </div>
+  </section>`);
+}
+
+app.addEventListener('click',ev=>{
+  const b=ev.target.closest('[data-act]');
+  if(!b)return;
+  const a=b.dataset.act;
+  if(a==='new')return renderEx(cur.e.id);
+  if(a==='start')return startTest();
+  if(a==='tnext'||a==='tskip')return tAct(a);
+  if(a==='reset'){
+    if(confirm('Effacer toutes vos statistiques ?')){S={q:{},sk:{},ex:{},tests:[]};save();dash()}
+    return;
+  }
+  exAct(a,b.closest('.q'));
+});
+app.addEventListener('keydown',ev=>{
+  if(ev.key!=='Enter'||!ev.target.classList.contains('ans'))return;
+  ev.preventDefault();
+  if(T)tAct('tnext');
+  else if(cur)exAct('chk',ev.target.closest('.q'));
+});
+
+function route(){
+  const h=location.hash.replace('#','')||'dashboard';
+  const base=/^ex\d+$/.test(h)?'exercices':h;
+  document.querySelectorAll('#links a').forEach(a=>a.classList.toggle('on',a.dataset.r===base));
+  if(h==='test')return T?qTest():testHome();
+  if(h==='exercices')return list();
+  if(h==='formules')return memo();
+  if(/^ex\d+$/.test(h))return renderEx(+h.slice(2));
+  dash();
+}
+window.addEventListener('hashchange',route);
+window.addEventListener('load',()=>typeset(app));
+route();
+})();
+</script>
+</body>
+</html>
