@@ -1,0 +1,20 @@
+{
+  "id": "stpi-1a-open",
+  "name": "STPI 1A Open",
+  "short_name": "STPI 1A",
+  "description": "Exercices corrigés et entraînement pour la filière STPI 1A de l'INSA Centre Val de Loire.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "../index.html",
+  "scope": "../",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#060608",
+  "categories": ["education"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
