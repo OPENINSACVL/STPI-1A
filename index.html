@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#060608">
-<meta name="description" content="Projet open source de révisions en ligne pour la filière STPI 1A de l'INSA Centre Val de Loire.">
+<meta name="description" content="Exercices corrigés pour réviser la filière STPI 1A de l'INSA Centre Val de Loire. Projet open source.">
 <title>STPI 1A Open</title>
 <link rel="icon" href="INSACVL.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,6 +74,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav);display:fle
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid var(--border);color:rgba(255,255,255,.55)}
 .tag.soon{color:#fff;border-color:rgba(255,255,255,.3)}
+.tabs{display:inline-flex;gap:4px;margin-top:32px;padding:4px;background:var(--surface);border:1px solid var(--border);border-radius:11px}
+.tab{font:600 13px var(--display);color:var(--t2);background:none;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;transition:color .15s,background .15s}
+.tab:hover{color:#fff}.tab.on{background:#fff;color:#000}
+.s2{display:none;margin-top:28px;color:var(--t2);font-size:14px}
 .empty{display:none;color:var(--t2);font-size:14px;margin-top:20px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
 .step-n{font-family:var(--display);font-size:13px;font-weight:700;color:var(--t3);margin-bottom:14px}
@@ -114,7 +118,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px}
 <header class="hero" id="top">
   <img class="hero-logo reveal" src="INSACVL.png" alt="">
   <h1 class="hero-title reveal d1">Réviser la première année de STPI, ensemble</h1>
-  <p class="hero-sub reveal d2">Fiches, exercices corrigés et annales de la filière STPI 1A, écrits et relus par les étudiants. Gratuit, sans compte, sans publicité.</p>
+  <p class="hero-sub reveal d2">Des exercices corrigés pour chaque matière de la filière STPI 1A, écrits et relus par les étudiants. Gratuit, sans compte, sans publicité.</p>
   <div class="ctas reveal d3">
     <a class="btn-primary" href="#matieres">Voir les matières</a>
     <a class="btn-ghost" href="https://github.com/OPENINSACVL/STPI-1A" target="_blank" rel="noopener">Contribuer sur GitHub</a>
@@ -128,25 +132,28 @@ footer{border-top:1px solid var(--border);padding:44px 32px}
 
 <section class="sec" id="matieres">
   <h2 class="sec-title reveal">Toutes les matières</h2>
-  <p class="sec-sub reveal d1">Chaque matière regroupe les fiches de cours, les exercices et les annales. Les contenus arrivent au fil des contributions.</p>
-  <input class="search reveal d2" id="q" type="search" placeholder="Rechercher une matière" aria-label="Rechercher une matière">
+  <p class="sec-sub reveal d1">Chaque matière regroupe des exercices corrigés, ajoutés au fil des contributions. Le semestre 2 suivra.</p>
+  <div class="tabs reveal d2" role="tablist"><button class="tab on" id="t1" role="tab" aria-selected="true">Semestre 1</button><button class="tab" id="t2" role="tab" aria-selected="false">Semestre 2</button></div>
+  <div id="s1">
+  <input class="search" id="q" type="search" placeholder="Rechercher une matière" aria-label="Rechercher une matière">
   <div class="bento" id="grid">
-    <article class="card reveal" data-k="maths analyse algèbre"><div class="card-title">Mathématiques</div><p class="card-desc">Analyse, algèbre linéaire, suites et séries, intégrales.</p><div class="tags"><span class="tag">Fiches</span><span class="tag">Exercices</span><span class="tag soon">Bientôt</span></div></article>
-    <article class="card reveal d1" data-k="mécanique ondes"><div class="card-title">Physique</div><p class="card-desc">Mécanique, ondes, thermodynamique et travaux pratiques.</p><div class="tags"><span class="tag">Fiches</span><span class="tag">Exercices</span><span class="tag soon">Bientôt</span></div></article>
-    <article class="card reveal d2" data-k="algorithmique programmation python"><div class="card-title">Informatique</div><p class="card-desc">Algorithmique, programmation et projets de la première année.</p><div class="tags"><span class="tag">Fiches</span><span class="tag">Code</span><span class="tag soon">Bientôt</span></div></article>
-    <article class="card reveal" data-k="matière réactions"><div class="card-title">Chimie</div><p class="card-desc">Structure de la matière, réactions et bilans.</p><div class="tags"><span class="tag">Fiches</span><span class="tag">Exercices</span><span class="tag soon">Bientôt</span></div></article>
-    <article class="card reveal d1" data-k="électricité circuits signal"><div class="card-title">Électronique</div><p class="card-desc">Circuits, régimes transitoires et signaux.</p><div class="tags"><span class="tag">Fiches</span><span class="tag">Exercices</span><span class="tag soon">Bientôt</span></div></article>
-    <article class="card reveal d2" data-k="anglais expression"><div class="card-title">Langues et communication</div><p class="card-desc">Anglais, expression écrite et orale, méthodes de travail.</p><div class="tags"><span class="tag">Fiches</span><span class="tag soon">Bientôt</span></div></article>
+    <article class="card reveal " data-k="maths analyse algèbre"><div class="card-title">Mathématiques</div><p class="card-desc">Exercices corrigés de mathématiques du semestre 1.</p><div class="tags"><span class="tag">Exercices corrigés</span><span class="tag soon">Bientôt</span></div></article>
+    <article class="card reveal d1" data-k=""><div class="card-title">Chimie</div><p class="card-desc">Exercices corrigés de chimie du semestre 1.</p><div class="tags"><span class="tag">Exercices corrigés</span><span class="tag soon">Bientôt</span></div></article>
+    <article class="card reveal d2" data-k="electrocinetique circuits electricite"><div class="card-title">Électrocinétique</div><p class="card-desc">Exercices corrigés sur les circuits électriques du semestre 1.</p><div class="tags"><span class="tag">Exercices corrigés</span><span class="tag soon">Bientôt</span></div></article>
+    <article class="card reveal " data-k="mecanique cinematique dynamique"><div class="card-title">Mécanique du point</div><p class="card-desc">Exercices corrigés de mécanique du point du semestre 1.</p><div class="tags"><span class="tag">Exercices corrigés</span><span class="tag soon">Bientôt</span></div></article>
+    <article class="card reveal d1" data-k="cct com communication culture technique"><div class="card-title">Communication et culture technique</div><p class="card-desc">Exercices et méthodes de CCT du semestre 1.</p><div class="tags"><span class="tag">Exercices corrigés</span><span class="tag soon">Bientôt</span></div></article>
   </div>
   <p class="empty" id="empty">Aucune matière ne correspond à cette recherche.</p>
+  </div>
+  <p class="s2" id="s2">Les matières du semestre 2 seront ajoutées après le semestre 1.</p>
 </section>
 
 <section class="sec" id="contribuer">
-  <h2 class="sec-title reveal">Ajouter un cours ou une correction</h2>
-  <p class="sec-sub reveal d1">Le site s'enrichit grâce aux étudiants. Trois étapes suffisent pour proposer une fiche.</p>
+  <h2 class="sec-title reveal">Ajouter un exercice corrigé</h2>
+  <p class="sec-sub reveal d1">Le site s'enrichit grâce aux étudiants. Trois étapes suffisent pour proposer une correction.</p>
   <div class="steps">
     <div class="card reveal"><div class="step-n">Étape 1</div><div class="card-title">Ouvrir le dépôt</div><p class="card-desc">Rendez-vous sur le dépôt GitHub OPENINSACVL/STPI-1A et créez un compte gratuit si besoin.</p></div>
-    <div class="card reveal d1"><div class="step-n">Étape 2</div><div class="card-title">Écrire la fiche</div><p class="card-desc">Ajoutez votre contenu dans le dossier de la matière concernée, en suivant le modèle fourni.</p></div>
+    <div class="card reveal d1"><div class="step-n">Étape 2</div><div class="card-title">Rédiger la correction</div><p class="card-desc">Ajoutez votre exercice et sa correction dans le dossier de la matière concernée, en suivant le modèle fourni.</p></div>
     <div class="card reveal d2"><div class="step-n">Étape 3</div><div class="card-title">Proposer la modification</div><p class="card-desc">Envoyez une pull request. Elle est relue, puis publiée sur le site.</p></div>
   </div>
 </section>
@@ -173,6 +180,9 @@ footer{border-top:1px solid var(--border);padding:44px 32px}
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
     els.forEach(function(el){io.observe(el)});
   }else{els.forEach(function(el){el.classList.add('in')})}
+  var t1=document.getElementById('t1'),t2=document.getElementById('t2'),s1=document.getElementById('s1'),s2=document.getElementById('s2');
+  function tab(a){t1.classList.toggle('on',a);t2.classList.toggle('on',!a);t1.setAttribute('aria-selected',a);t2.setAttribute('aria-selected',!a);s1.style.display=a?'':'none';s2.style.display=a?'none':'block'}
+  t1.onclick=function(){tab(true)};t2.onclick=function(){tab(false)};
   var q=document.getElementById('q'),cards=[].slice.call(document.querySelectorAll('#grid .card')),empty=document.getElementById('empty');
   function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
   q.addEventListener('input',function(){
