@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#060608">
-<meta name="description" content="Entrainement au DS1 de mécanique du point, STPI 1A INSA CVL : énoncés générés, corrections calculées, statistiques et test de positionnement.">
+<meta name="description" content="Entrainement au DS1 de mécanique du point, STPI 1A INSA CVL : cours, conseils, énoncés générés, sujets blancs PDF avec correction, statistiques et test de positionnement.">
 <title>DS1 Mécanique du point | STPI 1A Open</title>
 <link rel="icon" href="INSACVL.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,6 +117,49 @@ summary .f{color:var(--ko)}
   .grid{grid-template-columns:1fr}.brow{grid-template-columns:1fr 84px}.brow .bar{grid-column:1/-1;order:3}
   .logo-text{display:none}
 }
+
+/* ---- Cours, conseils, sujets blancs ---- */
+.toc{margin:22px 0 8px}.toc .tag{cursor:pointer;font-family:inherit}.toc .tag:hover{color:#fff;border-color:var(--border-h)}
+.cours{margin-top:14px}.cours h3,.tipc h3{font-family:var(--display);font-size:17px;margin-bottom:12px}
+.cours p,.tipc li{font-size:14.5px;line-height:1.8;color:rgba(255,255,255,.86)}.cours p+p{margin-top:8px}
+.cours .rq,.tipc .rq{color:#9cc4f5}.steps{padding-left:20px;font-size:14.5px;line-height:1.8;color:rgba(255,255,255,.86)}.steps li{margin-bottom:6px}
+.tipc ul{padding-left:18px}.tipc li{margin-bottom:8px}
+.tbl{overflow-x:auto}.tbl table{border-collapse:collapse;width:100%;font-size:13.5px;margin-top:10px}
+.tbl th,.tbl td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top;line-height:1.6}
+.tbl th{background:rgba(255,255,255,.05);font-family:var(--display)}.tbl a{text-decoration:underline}
+.gen{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end;margin-top:22px}
+.gen label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--t2)}
+.gen select,.gen input{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:9px;padding:10px 12px;color:#fff;font:14px var(--sans);outline:none}
+.gen select option{color:#000}.gen .ctas{grid-column:1/-1}
+.paper{background:#fff;color:#111;border-radius:14px;padding:30px 34px;margin-top:22px;font-size:14px;line-height:1.6}
+.paper[hidden]{display:none}
+.paper .hd{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:#444;border-bottom:1px solid #bbb;padding-bottom:6px;margin-bottom:12px}
+.paper h2.pt{font-family:var(--display);font-size:22px;margin:6px 0;color:#111;letter-spacing:-.01em}
+.paper .meta{font-size:13px;color:#333}.paper .cons{font-size:12.5px;color:#333;margin:10px 0 4px 18px}
+.paper .exo{margin-top:20px}.paper h3{font-family:var(--display);font-size:16px;color:#111;margin-bottom:8px}
+.paper h3.red{color:#c00000}.paper .ptt{font-weight:500;font-size:12.5px;color:#555}
+.paper .st{margin-bottom:8px}.paper .figw{text-align:center;margin:8px 0}.paper .fig{max-width:340px;width:100%;height:auto}
+.paper .qi{margin:8px 0 8px 4px}.paper .qp{font-style:italic;color:#444;font-size:12.5px;white-space:nowrap}
+.paper .fin{text-align:center;margin-top:18px;font-style:italic;color:#555}
+.paper .cq{margin:10px 0 12px}.paper .cqh{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;margin-bottom:3px}
+.paper .bar{font-size:12px;color:#555}.paper .chk{margin-left:auto;font-size:12.5px;color:#333}
+.paper .res{background:#dbe9f8;padding:1px 6px;border-radius:3px;display:inline-block;margin:1px 0}
+.paper .rq{color:#1b5aa8;font-style:italic;margin-top:6px}.paper p+p{margin-top:5px}
+.paper .recap{margin-top:18px;padding:10px 12px;border:1px solid #bbb;border-radius:8px;font-size:13px}
+.paper .katex{color:#111}
+@media(max-width:700px){.gen{grid-template-columns:1fr}.paper{padding:18px 14px}}
+@media print{
+  @page{size:A4;margin:13mm 14mm}
+  html,body{background:#fff!important;color:#000!important}
+  nav,.noprint{display:none!important}
+  .wrap{padding:0!important;max-width:none!important}
+  .paper{border-radius:0;padding:0;margin:0;font-size:12pt;box-shadow:none}
+  .paper .res{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .exo{break-inside:avoid-page}.cq{break-inside:avoid}
+  body.ps .corr,body.pc .sujet{display:none!important}
+  body.pc .corr,body.pa .corr{display:block!important}
+  body.pa .corr{break-before:page}
+}
 </style>
 </head>
 <body>
@@ -129,7 +172,10 @@ summary .f{color:var(--ko)}
     <a class="nav-link" href="#dashboard" data-r="dashboard">Tableau de bord</a>
     <a class="nav-link" href="#test" data-r="test">Test de positionnement</a>
     <a class="nav-link" href="#exercices" data-r="exercices">Exercices</a>
+    <a class="nav-link" href="#cours" data-r="cours">Cours</a>
     <a class="nav-link" href="#formules" data-r="formules">Formules</a>
+    <a class="nav-link" href="#conseils" data-r="conseils">Conseils</a>
+    <a class="nav-link" href="#sujets" data-r="sujets">Sujets blancs</a>
   </div>
   <a class="btn-nav" href="index.html">Retour au site</a>
 </nav>
@@ -137,6 +183,7 @@ summary .f{color:var(--ko)}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="meca_extra.js"></script>
 <script>
 (function(){
 const r=String.raw,G=9.81;
@@ -399,6 +446,7 @@ const typeset=el=>{
   if(window.renderMathInElement)try{renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}
 };
 const show=h=>{app.innerHTML=h;typeset(app);window.scrollTo(0,0)};
+window.DS1={show,typeset,app};if(window.DS1X)window.DS1X.install();
 
 const judge=(q,v)=>{
   if(q.t==='qcm')return +v===q.c;
@@ -441,6 +489,7 @@ function dash(){
   show(`<section class="wrap">
     <h1>DS1 de mécanique du point</h1>
     <p class="lead">Entraînement aux exercices I à X des TD 1 à 6 : relation fondamentale (TRC), théorème de l'énergie cinétique (TEC), frottement solide et pendule. Les énoncés sont tirés au hasard et chaque réponse est calculée en direct.</p>
+    <div class="ctas"><a class="btn-primary" href="#sujets">Sujets blancs (PDF)</a><a class="btn-ghost" href="#cours">Cours</a><a class="btn-ghost" href="#conseils">Conseils pour gagner des points</a></div>
     <div class="grid" style="margin-top:32px">
       <div class="card"><div class="big">${tot.a?Math.round(100*tot.o/tot.a)+' %':'-'}</div><div class="cap">Taux de réussite global</div></div>
       <div class="card"><div class="big">${tot.a}</div><div class="cap">Questions traitées</div></div>
@@ -640,6 +689,7 @@ function route(){
   if(h==='test')return T?qTest():testHome();
   if(h==='exercices')return list();
   if(h==='formules')return memo();
+  if(window.DS1X&&(h==='cours'||h==='conseils'||h==='sujets'))return window.DS1X[h]();
   if(/^ex\d+$/.test(h))return renderEx(+h.slice(2));
   dash();
 }
